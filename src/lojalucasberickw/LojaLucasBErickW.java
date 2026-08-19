@@ -1,20 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package lojalucasberickw;
 
-/**
- *
- * @author Lucas
- */
+import java.sql.Connection;
+import java.sql.SQLException;
+
 public class LojaLucasBErickW {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        DatabaseConnection.setBancoAtual(
+                DatabaseConnection.TipoBanco.MYSQL8
+        );
+
+        try (Connection con = DatabaseConnection.Connect()) {
+
+            System.out.println("Conectado!");
+
+        } catch (SQLException e) {
+
+            System.out.println("ERRO:");
+            e.printStackTrace();
+        }
     }
-    
 }

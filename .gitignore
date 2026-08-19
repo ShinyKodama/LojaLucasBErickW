@@ -10,3 +10,6 @@
 # Windows
 Thumbs.db
 Desktop.ini
+
+# Drivers JDBC locais
+/libs/**/*.jar
