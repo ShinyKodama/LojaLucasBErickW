@@ -1,0 +1,12 @@
+# NetBeans
+/build/
+/dist/
+/nbproject/private/
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Windows
+Thumbs.db
+Desktop.ini
