@@ -10,10 +10,7 @@ import java.util.Properties;
 
 public class DatabaseConnection {
 
-    public enum TipoBanco {
-        MYSQL5,
-        MYSQL8
-    }
+    public enum TipoBanco { MYSQL5, MYSQL8 }
 
     private static TipoBanco bancoAtual = TipoBanco.MYSQL8;
     
@@ -26,13 +23,13 @@ public class DatabaseConnection {
 
         try {
             Path jar = Path.of(
-                    System.getProperty("user.dir"),
-                    caminhoJar
+                System.getProperty("user.dir"),
+                caminhoJar
             );
 
             URLClassLoader loader = new URLClassLoader(
-                    new URL[]{jar.toUri().toURL()},
-                    DatabaseConnection.class.getClassLoader()
+                new URL[]{jar.toUri().toURL()},
+                DatabaseConnection.class.getClassLoader()
             );
 
             Class<?> classe = Class.forName(
@@ -42,8 +39,8 @@ public class DatabaseConnection {
             );
 
             Driver driver = (Driver) classe
-                    .getDeclaredConstructor()
-                    .newInstance();
+                .getDeclaredConstructor()
+                .newInstance();
 
             Properties propriedades = new Properties();
             propriedades.setProperty("user", usuario);
@@ -53,7 +50,7 @@ public class DatabaseConnection {
 
             if (conexao == null) {
                 throw new SQLException(
-                        "O driver não aceitou a URL: " + url
+                    "O driver não aceitou a URL: " + url
                 );
             }
 
@@ -64,8 +61,7 @@ public class DatabaseConnection {
 
         } catch (Exception e) {
             throw new SQLException(
-                    "Erro ao carregar o driver JDBC",
-                    e
+                "Erro ao carregar o driver JDBC", e
             );
         }
     }
